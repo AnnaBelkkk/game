@@ -4,13 +4,13 @@ let canv = document.getElementById("can"); //холст, из html, найден
 let content = canv.getContext("2d"); //вид игры
 
 
-let backgraund = new Image();  //объект для изображения
+let backgraund = new Image(); //объект для изображения
 let backgroundOver = new Image();
 let chell = new Image(); //объект для изображения
 let chell2 = new Image();
 let botblock = new Image();
 let botblock2 = new Image();
-let textim = new  Image();
+let textim = new Image();
 let connect = 0;
 
 
@@ -34,10 +34,11 @@ botblock2.src = "../img/кекс.png";
 
 let block = [];
 block[0] = {
-    x:canv.width, //за пределами экрана
+    x: canv.width, //за пределами экрана
     y: -100,
     img: 0
 }
+
 function sleep(millis) {
     var t = (new Date()).getTime();
     var i = 0;
@@ -61,7 +62,7 @@ const paint = () => { //Для загрузки изображения на са
     }
     if (!keySpress) {
         y += gravity;
-        if (y > 85){
+        if (y > 85) {
             notReterned = false;
             y = 85;
         }
@@ -80,15 +81,15 @@ const paint = () => { //Для загрузки изображения на са
         }
 
 
-        block[i].x --; //
+        block[i].x--; //
         let yPos = Math.floor(Math.random() * 89) + 40;
         if (yPos < 80) {
             yPos = -180;
         }
         if (block[i].x === 180) {
             block.push({ //объект
-                x:canv.width,
-                y:yPos,
+                x: canv.width,
+                y: yPos,
                 img: Math.floor(Math.random() * 2)
             });
         }
@@ -106,35 +107,24 @@ chell.onload = paint;
 
 
 document.addEventListener('keydown', (event) => {
-    if (event.code === "KeyW")
-    {
+    if (event.code === "KeyW") {
         if (y !== 85) {
             return;
         }
         y -= 100;
         notReterned = true;
     }
-    if (event.code === "KeyS" && height === 50 && !notReterned)
-    {
-        height -=20;
+    if (event.code === "KeyS" && height === 50 && !notReterned) {
+        height -= 20;
         y += 20;
         keySpress = true;
     }
 });
 document.addEventListener('keyup', (event) => {
 
-    if (event.code === "KeyS" && height === 30)
-    {
-        height +=20;
+    if (event.code === "KeyS" && height === 30) {
+        height += 20;
         keySpress = false;
     }
 
 });
-
-
-
-let timerInput = document.getElementById("time"); // Берём строку
-let buttonRun = document.getElementById("button");// Берём кнопку запуска
-let timerShow = document.getElementById("timer");
-
-
